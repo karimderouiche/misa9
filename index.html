@@ -993,6 +993,60 @@ section {
 
 }
 
+   /* ==================================================
+   CONTACT MOBILE FLOTTANT
+================================================== */
+
+.mobile-contact-bar {
+    display: none;
+}
+
+@media (max-width: 850px) {
+
+    body {
+        padding-bottom: 68px;
+    }
+
+    .mobile-contact-bar {
+        position: fixed;
+
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        z-index: 2000;
+
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        background: white;
+
+        box-shadow: 0 -5px 20px rgba(0,0,0,.12);
+    }
+
+    .mobile-contact-bar a {
+        min-height: 58px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-weight: 700;
+        font-size: 15px;
+    }
+
+    .mobile-call {
+        color: white;
+        background: #d7652b;
+    }
+
+    .mobile-whatsapp {
+        color: white;
+        background: #238636;
+    }
+
+}
+
 </style>
 </head>
 
@@ -1432,11 +1486,16 @@ section {
                     Une entreprise locale
                 </h3>
 
-                <p>
-                    MISA9 intervient principalement
-                    à Marseille et dans
-                    les communes environnantes.
-                </p>
+               <p>
+                   MISA9 intervient principalement à Marseille ainsi que dans
+                   plusieurs secteurs des Bouches-du-Rhône, notamment Aubagne,
+                   Aix-en-Provence, Allauch et Martigues.
+               </p>
+               
+               <p>
+                   D'autres communes peuvent également être couvertes selon
+                   la localisation et la nature des travaux.
+               </p>
 
             </article>
 
@@ -1891,7 +1950,22 @@ document
     );
 
 </script>
+<div class="mobile-contact-bar">
 
+    <a href="tel:+33760267637" class="mobile-call">
+        ☎ Appeler
+    </a>
+
+    <a
+        href="https://wa.me/33760267637"
+        target="_blank"
+        rel="noopener"
+        class="mobile-whatsapp"
+    >
+        WhatsApp
+    </a>
+
+</div>
 
 </body>
 </html>
