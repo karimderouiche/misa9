@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+/* ==================================================
+   BASE
+================================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --orange: #d7652b;
+    --orange-dark: #b94e1c;
+    --dark: #20272d;
+    --text: #24292d;
+    --soft: #62676b;
+    --cream: #f7f5f2;
+    --cream-dark: #efebe7;
+    --white: #ffffff;
+    --border: #e6e2de;
+
+    --container: 1400px;
+    --header-height: 78px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: #fff;
+    line-height: 1.55;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+textarea {
+    font-family: inherit;
+}
+
+section {
+    scroll-margin-top: 85px;
+}
+
+.container {
+    width: min(92%, var(--container));
+    margin: auto;
+}
+
+
+/* ==================================================
+   HEADER
+================================================== */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255,255,255,.97);
+    border-bottom: 1px solid #ececec;
+}
+
+.navbar {
+    width: min(92%, var(--container));
+    min-height: var(--header-height);
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 25px;
+}
+
+
+/* LOGO */
+
+.logo {
+    flex-shrink: 0;
+    line-height: .9;
+}
+
+.logo-main {
+    font-size: clamp(25px, 2.3vw, 34px);
+    font-weight: 900;
+    letter-spacing: -1.5px;
+}
+
+.logo-main span {
+    color: var(--orange);
+}
+
+.logo-sub {
+    display: block;
+    font-size: 7px;
+    margin-top: 7px;
+    letter-spacing: .6px;
+    font-weight: 700;
+}
+
+
+/* NAVIGATION */
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2vw, 32px);
+}
+
+.nav-menu a {
+    font-size: 14px;
+    white-space: nowrap;
+    transition: color .2s;
+}
+
+.nav-menu a:not(.nav-cta):hover {
+    color: var(--orange);
+}
+
+.nav-cta {
+    color: white !important;
+    background: var(--orange);
+
+    font-weight: 700;
+    padding: 13px 20px;
+    border-radius: 4px;
+
+    transition:
+        background .2s,
+        transform .2s;
+}
+
+.nav-cta:hover {
+    background: var(--orange-dark);
+    transform: translateY(-1px);
+}
+
+
+/* HAMBURGER */
+
+.menu-toggle {
+    display: none;
+
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+
+    width: 44px;
+    height: 44px;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-toggle-inner {
+    width: 25px;
+    height: 18px;
+    position: relative;
+}
+
+.menu-toggle-inner span {
+    position: absolute;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: var(--dark);
+
+    transition:
+        transform .25s,
+        top .25s,
+        opacity .2s;
+}
+
+.menu-toggle-inner span:nth-child(1) {
+    top: 0;
+}
+
+.menu-toggle-inner span:nth-child(2) {
+    top: 8px;
+}
+
+.menu-toggle-inner span:nth-child(3) {
+    top: 16px;
+}
+
+.menu-toggle.open span:nth-child(1) {
+    top: 8px;
+    transform: rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+    top: 8px;
+    transform: rotate(-45deg);
+}
+
+
+/* ==================================================
+   HERO
+================================================== */
+
+.hero {
+    position: relative;
+
+    min-height: clamp(430px, 48vw, 610px);
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(219,237,250,.98) 0%,
+            rgba(219,237,250,.95) 32%,
+            rgba(219,237,250,.70) 48%,
+            rgba(219,237,250,.10) 73%
+        ),
+        url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=2000&q=88");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-inner {
+    width: min(88%, var(--container));
+    margin: auto;
+
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    max-width: 610px;
+}
+
+.hero-eyebrow {
+    font-size: clamp(11px, 1.1vw, 14px);
+
+    text-transform: uppercase;
+    letter-spacing: .7px;
+
+    margin-bottom: 10px;
+}
+
+.hero-logo {
+    font-size: clamp(55px, 6vw, 82px);
+    font-weight: 900;
+    letter-spacing: -4px;
+    line-height: .9;
+}
+
+.hero-logo span {
+    color: var(--orange);
+}
+
+.hero h1 {
+    font-size: clamp(31px, 3.5vw, 49px);
+    line-height: 1.03;
+
+    margin: 15px 0 18px;
+
+    max-width: 620px;
+}
+
+.hero p {
+    font-size: clamp(14px, 1.35vw, 17px);
+
+    max-width: 580px;
+    margin-bottom: 27px;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    background: var(--orange);
+    color: white;
+
+    padding: 14px 22px;
+
+    border-radius: 4px;
+
+    font-weight: 700;
+    font-size: 14px;
+
+    transition:
+        background .2s,
+        transform .2s;
+}
+
+.button:hover {
+    background: var(--orange-dark);
+    transform: translateY(-2px);
+}
+
+
+/* ==================================================
+   TITRES
+================================================== */
+
+.section {
+    padding: clamp(52px, 6vw, 82px) 0;
+}
+
+.section-title {
+    text-align: center;
+
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.1;
+}
+
+.section-line {
+    width: 46px;
+    height: 3px;
+
+    background: var(--orange);
+
+    margin: 10px auto 14px;
+}
+
+.section-intro {
+    text-align: center;
+    color: var(--soft);
+
+    max-width: 800px;
+
+    margin: 0 auto 37px;
+}
+
+
+/* ==================================================
+   SERVICES
+================================================== */
+
+.services {
+    background: var(--cream);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.service-card {
+    background: white;
+
+    border: 1px solid var(--border);
+    border-radius: 4px;
+
+    padding: 28px 15px;
+
+    text-align: center;
+
+    min-height: 270px;
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 9px 25px rgba(0,0,0,.07);
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+
+    margin: 0 auto 17px;
+
+    border-radius: 50%;
+
+    background: #f4efeb;
+    color: var(--orange);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-icon svg {
+    width: 29px;
+    height: 29px;
+
+    stroke: currentColor;
+    fill: none;
+
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.service-card h3 {
+    font-size: 17px;
+    line-height: 1.18;
+
+    margin-bottom: 12px;
+}
+
+.service-card p {
+    font-size: 13px;
+    color: #53585b;
+}
+
+
+/* ==================================================
+   POURQUOI
+================================================== */
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.why-card {
+    text-align: center;
+
+    padding: 12px 32px;
+
+    border-right: 1px solid #e8e8e8;
+}
+
+.why-card:last-child {
+    border-right: 0;
+}
+
+.why-icon {
+    width: 48px;
+    height: 48px;
+
+    margin: auto auto 10px;
+
+    color: var(--orange);
+}
+
+.why-icon svg {
+    width: 100%;
+    height: 100%;
+
+    stroke: currentColor;
+    fill: none;
+
+    stroke-width: 1.5;
+}
+
+.why-card h3 {
+    font-size: 16px;
+    line-height: 1.2;
+
+    margin-bottom: 10px;
+}
+
+.why-card p {
+    font-size: 13px;
+    color: #53585b;
+}
+
+
+/* ==================================================
+   ZONE
+================================================== */
+
+.zone {
+    background: var(--cream);
+}
+
+.zone-layout {
+    display: grid;
+    grid-template-columns: minmax(300px, 1fr) minmax(320px, 1.2fr);
+
+    align-items: center;
+    gap: clamp(35px, 5vw, 70px);
+}
+
+.zone-photo {
+    min-height: 350px;
+
+    border-radius: 5px;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(rgba(0,0,0,.08), rgba(0,0,0,.08)),
+        url("https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=1200&q=85");
+
+    background-size: cover;
+    background-position: center;
+}
+
+.zone-badge {
+    position: absolute;
+
+    top: 25px;
+    left: 25px;
+
+    background: rgba(255,255,255,.90);
+
+    padding: 10px 15px;
+
+    border-radius: 3px;
+
+    font-size: 19px;
+    font-style: italic;
+}
+
+.zone-content h2 {
+    font-size: clamp(28px, 3vw, 38px);
+    line-height: 1.1;
+}
+
+.zone-content h3 {
+    font-size: 21px;
+
+    margin: 16px 0 8px;
+}
+
+.zone-content p {
+    max-width: 650px;
+    margin-bottom: 8px;
+}
+
+.zone-notice {
+    margin-top: 20px;
+
+    max-width: 530px;
+
+    background: white;
+
+    padding: 17px 20px;
+
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.zone-notice svg {
+    width: 27px;
+    min-width: 27px;
+
+    stroke: var(--orange);
+    fill: none;
+
+    stroke-width: 1.8;
+}
+
+
+/* ==================================================
+   CONTACT
+================================================== */
+
+.contact-layout {
+    display: grid;
+    grid-template-columns: 1.2fr .75fr 1fr;
+
+    gap: clamp(30px, 4vw, 55px);
+}
+
+.contact-copy h2 {
+    font-size: clamp(28px, 3vw, 37px);
+    line-height: 1.1;
+}
+
+.contact-copy h3 {
+    margin: 13px 0 9px;
+}
+
+.contact-copy p {
+    margin-bottom: 9px;
+}
+
+.contact-copy ul {
+    padding-left: 20px;
+    margin: 10px 0 15px;
+}
+
+.contact-details {
+    border-left: 1px solid #ddd;
+
+    padding-left: 35px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    gap: 28px;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-row svg {
+    width: 28px;
+    min-width: 28px;
+
+    stroke: var(--orange);
+    fill: none;
+
+    stroke-width: 1.7;
+}
+
+.contact-row span {
+    font-size: 14px;
+}
+
+
+/* FORM */
+
+.contact-form {
+    background: var(--cream);
+
+    padding: 25px;
+
+    border-radius: 5px;
+}
+
+.contact-form h3 {
+    margin-bottom: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+
+    display: block;
+
+    border: 1px solid #dcdcdc;
+    background: white;
+
+    padding: 12px;
+
+    border-radius: 3px;
+
+    margin-bottom: 10px;
+
+    font-size: 14px;
+}
+
+.contact-form textarea {
+    height: 115px;
+    resize: vertical;
+}
+
+.contact-form button {
+    width: 100%;
+
+    border: 0;
+    cursor: pointer;
+}
+
+.form-help {
+    font-size: 11px;
+    color: #777;
+
+    margin-top: 8px;
+}
+
+
+/* ==================================================
+   FOOTER
+================================================== */
+
+.footer {
+    background: var(--dark);
+    color: white;
+
+    padding: 38px 0;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    align-items: center;
+
+    gap: 30px;
+}
+
+.footer .logo-main {
+    color: white;
+}
+
+.footer-center {
+    text-align: center;
+
+    font-size: 13px;
+}
+
+.footer-right {
+    text-align: right;
+
+    font-size: 12px;
+    color: #ddd;
+}
+
+.footer-right a:hover {
+    color: white;
+}
+
+
+/* ==================================================
+   TABLETTES
+================================================== */
+
+@media (max-width: 1180px) {
+
+    .navbar {
+        width: 94%;
+    }
+
+    .nav-menu {
+        gap: 16px;
+    }
+
+    .nav-menu a {
+        font-size: 12px;
+    }
+
+    .nav-cta {
+        padding: 11px 13px;
+    }
+
+    .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .service-card {
+        min-height: 230px;
+    }
+
+    .contact-layout {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .contact-copy {
+        grid-column: 1 / -1;
+    }
+
+    .contact-details {
+        border-left: 0;
+        padding-left: 0;
+    }
+}
+
+
+/* ==================================================
+   MOBILE + PETITES TABLETTES
+================================================== */
+
+@media (max-width: 850px) {
+
+    :root {
+        --header-height: 68px;
+    }
+
+    .navbar {
+        min-height: var(--header-height);
+    }
+
+
+    /* MENU MOBILE */
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        background: white;
+
+        padding: 0 6%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0;
+
+        max-height: 0;
+        overflow: hidden;
+
+        opacity: 0;
+
+        box-shadow: 0 12px 20px rgba(0,0,0,.08);
+
+        transition:
+            max-height .3s ease,
+            opacity .25s ease,
+            padding .3s;
+    }
+
+    .nav-menu.open {
+        max-height: 500px;
+
+        opacity: 1;
+
+        padding-top: 10px;
+        padding-bottom: 18px;
+    }
+
+    .nav-menu a {
+        font-size: 15px;
+
+        padding: 13px 0;
+
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-menu .nav-cta {
+        border-bottom: 0;
+
+        margin-top: 10px;
+
+        padding: 13px 17px;
+
+        text-align: center;
+    }
+
+
+    /* HERO */
+
+    .hero {
+        min-height: 530px;
+
+        background-image:
+            linear-gradient(
+                90deg,
+                rgba(223,239,251,.97),
+                rgba(223,239,251,.86)
+            ),
+            url("https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85");
+
+        background-position: center;
+    }
+
+    .hero-inner {
+        width: 88%;
+    }
+
+    .hero-content {
+        max-width: 520px;
+    }
+
+
+    /* POURQUOI */
+
+    .why-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .why-card {
+        border-right: 0;
+        border-bottom: 1px solid #e8e8e8;
+
+        padding: 28px 20px;
+    }
+
+
+    /* ZONE */
+
+    .zone-layout {
+        grid-template-columns: 1fr;
+
+        gap: 30px;
+    }
+
+
+    /* CONTACT */
+
+    .contact-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-copy {
+        grid-column: auto;
+    }
+
+    .contact-details {
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+
+        padding: 28px 0;
+    }
+
+
+    /* FOOTER */
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+
+        text-align: center;
+    }
+
+    .footer-right {
+        text-align: center;
+    }
+}
+
+
+/* ==================================================
+   TÉLÉPHONE
+================================================== */
+
+@media (max-width: 560px) {
+
+    .container {
+        width: 90%;
+    }
+
+    .hero-inner {
+        width: 90%;
+    }
+
+    .hero {
+        min-height: 500px;
+    }
+
+    .hero h1 {
+        max-width: 420px;
+    }
+
+    .hero p {
+        max-width: 420px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        min-height: auto;
+
+        padding: 25px 24px;
+    }
+
+    .why-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zone-photo {
+        min-height: 270px;
+    }
+
+    .zone-badge {
+        top: 17px;
+        left: 17px;
+
+        font-size: 16px;
+    }
+
+    .button {
+        width: 100%;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- ==================================================
+     HEADER
+================================================== -->
+
+<header class="header">
+
+    <nav class="navbar">
+
+        <a href="#accueil" class="logo">
+
+            <div class="logo-main">
+                MISA<span>9</span>
+            </div>
+
+            <small class="logo-sub">
+                FAÇADES & RÉNOVATION EXTÉRIEURE
+            </small>
+
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Ouvrir le menu"
+            aria-expanded="false"
+        >
+
+            <span class="menu-toggle-inner">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+
+        </button>
+
+
+        <div class="nav-menu" id="navMenu">
+
+            <a href="#accueil">Accueil</a>
+
+            <a href="#services">
+                Nos services
+            </a>
+
+            <a href="#pourquoi">
+                Pourquoi nous ?
+            </a>
+
+            <a href="#zone">
+                Zone d'intervention
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+            <a href="#contact" class="nav-cta">
+                Demander un devis
+            </a>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+
+<!-- ==================================================
+     HERO
+================================================== -->
+
+<section
+    class="hero"
+    id="accueil"
+>
+
+    <div class="hero-inner">
+
+        <div class="hero-content">
+
+            <div class="hero-eyebrow">
+                Travaux de façade et rénovation extérieure
+            </div>
+
+            <div class="hero-logo">
+                MISA<span>9</span>
+            </div>
+
+            <h1>
+                Donnez une nouvelle vie à vos façades
+            </h1>
+
+            <p>
+                MISA9 intervient pour vos travaux de façade
+                et de rénovation extérieure à Marseille
+                et dans les alentours.
+            </p>
+
+            <a
+                href="#contact"
+                class="button"
+            >
+                Demander un devis
+                <span>→</span>
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     SERVICES
+================================================== -->
+
+<section
+    class="section services"
+    id="services"
+>
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Nos services
+        </h2>
+
+        <div class="section-line"></div>
+
+        <p class="section-intro">
+            Des prestations adaptées à vos besoins
+            en façade et rénovation extérieure.
+        </p>
+
+
+        <div class="services-grid">
+
+
+            <!-- RAVALEMENT -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 11.5L12 4l9 7.5"></path>
+                        <path d="M5 10.5V21h14V10.5"></path>
+                        <path d="M9 21v-6h6v6"></path>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Ravalement<br>
+                    de façade
+                </h3>
+
+                <p>
+                    Travaux de remise en état et rénovation
+                    de façades selon l'état du support
+                    et les besoins du bâtiment.
+                </p>
+
+            </article>
+
+
+            <!-- ENDUITS -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 20l5-5"></path>
+                        <path d="M8 16l8-8"></path>
+                        <path d="M14 6l2-2a2 2 0 013 0l1 1a2 2 0 010 3l-2 2"></path>
+                        <path d="M5 21l4-1-5-5-1 4z"></path>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Enduits<br>
+                    extérieurs
+                </h3>
+
+                <p>
+                    Application et reprise d'enduits
+                    pour protéger, rénover et améliorer
+                    l'aspect extérieur des murs.
+                </p>
+
+            </article>
+
+
+            <!-- PEINTURE -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 5h11a2 2 0 010 4H4z"></path>
+                        <path d="M15 7h3a2 2 0 012 2v2"></path>
+                        <path d="M20 11h-4v3"></path>
+                        <path d="M16 14v7"></path>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Peinture<br>
+                    extérieure
+                </h3>
+
+                <p>
+                    Mise en peinture des façades,
+                    murs et surfaces extérieures après
+                    préparation adaptée du support.
+                </p>
+
+            </article>
+
+
+            <!-- TRAITEMENT -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"></path>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Traitement<br>
+                    des murs
+                </h3>
+
+                <p>
+                    Préparation et traitement des supports
+                    extérieurs avant remise en état
+                    ou application des finitions.
+                </p>
+
+            </article>
+
+
+            <!-- REMISE EN ÉTAT -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M4 4h16v16H4z"></path>
+                        <path d="M4 9h16"></path>
+                        <path d="M4 14h16"></path>
+                        <path d="M9 4v16"></path>
+                        <path d="M15 4v16"></path>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Remise en état<br>
+                    de façades
+                </h3>
+
+                <p>
+                    Intervention sur les façades nécessitant
+                    une rénovation, des reprises
+                    ou un rafraîchissement général.
+                </p>
+
+            </article>
+
+
+            <!-- FINITIONS -->
+
+            <article class="service-card">
+
+                <div class="service-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 3l2.5 5 5.5.8-4 4 .9 5.7-4.9-2.6-4.9 2.6.9-5.7-4-4 5.5-.8z"></path>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Finitions<br>
+                    extérieures
+                </h3>
+
+                <p>
+                    Travaux de finition et reprises permettant
+                    de compléter la rénovation
+                    des surfaces extérieures.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     POURQUOI
+================================================== -->
+
+<section
+    class="section"
+    id="pourquoi"
+>
+
+    <div class="container">
+
+        <h2 class="section-title">
+            Pourquoi contacter MISA9 ?
+        </h2>
+
+        <div class="section-line"></div>
+
+        <p class="section-intro">
+            Un accompagnement simple et sérieux
+            pour votre projet.
+        </p>
+
+
+        <div class="why-grid">
+
+
+            <article class="why-card">
+
+                <div class="why-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="7" r="4"></circle>
+                        <path d="M4 21v-2a8 8 0 0116 0v2"></path>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Un interlocuteur direct
+                </h3>
+
+                <p>
+                    Vous échangez directement avec l'entrepreneur
+                    pour présenter votre besoin
+                    et organiser l'intervention.
+                </p>
+
+            </article>
+
+
+            <article class="why-card">
+
+                <div class="why-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 3h9l3 3v15H6z"></path>
+                        <path d="M15 3v4h4"></path>
+                        <path d="M9 11h6"></path>
+                        <path d="M9 15h6"></path>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Une demande étudiée selon votre projet
+                </h3>
+
+                <p>
+                    Chaque demande est examinée en fonction
+                    de l'état des surfaces, de la nature
+                    des travaux et des contraintes du chantier.
+                </p>
+
+            </article>
+
+
+            <article class="why-card">
+
+                <div class="why-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 12a8 8 0 01-8 8H6l-4 2 1.5-4A8 8 0 1112 4a9 9 0 019 8z"></path>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Des échanges simples et clairs
+                </h3>
+
+                <p>
+                    Les travaux à prévoir peuvent être définis
+                    avant intervention afin de proposer
+                    une prestation correspondant au besoin identifié.
+                </p>
+
+            </article>
+
+
+            <article class="why-card">
+
+                <div class="why-icon">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22s7-6 7-13a7 7 0 10-14 0c0 7 7 13 7 13z"></path>
+                        <circle cx="12" cy="9" r="2"></circle>
+                    </svg>
+
+                </div>
+
+                <h3>
+                    Une entreprise locale
+                </h3>
+
+                <p>
+                    MISA9 intervient principalement
+                    à Marseille et dans
+                    les communes environnantes.
+                </p>
+
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     ZONE
+================================================== -->
+
+<section
+    class="section zone"
+    id="zone"
+>
+
+    <div class="container">
+
+        <div class="zone-layout">
+
+
+            <div class="zone-photo">
+
+                <span class="zone-badge">
+                    Marseille et alentours
+                </span>
+
+            </div>
+
+
+            <div class="zone-content">
+
+                <h2>
+                    Zone d'intervention
+                </h2>
+
+                <div
+                    class="section-line"
+                    style="margin-left:0;"
+                ></div>
+
+                <h3>
+                    Marseille et alentours
+                </h3>
+
+                <p>
+                    MISA9 intervient principalement à Marseille
+                    et dans les secteurs environnants
+                    pour les travaux de façade
+                    et de rénovation extérieure.
+                </p>
+
+                <p>
+                    La possibilité d'intervention dépend
+                    de la localisation et de la nature des travaux.
+                </p>
+
+
+                <div class="zone-notice">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22s7-6 7-13a7 7 0 10-14 0c0 7 7 13 7 13z"></path>
+                        <circle cx="12" cy="9" r="2"></circle>
+                    </svg>
+
+                    <strong>
+                        Contactez-nous pour vérifier
+                        la disponibilité dans votre secteur.
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     CONTACT
+================================================== -->
+
+<section
+    class="section"
+    id="contact"
+>
+
+    <div class="container">
+
+        <div class="contact-layout">
+
+
+            <div class="contact-copy">
+
+                <h2>
+                    Vous avez un projet ?
+                </h2>
+
+                <div
+                    class="section-line"
+                    style="margin-left:0;"
+                ></div>
+
+                <h3>
+                    Demande de devis
+                </h3>
+
+                <p>
+                    Vous souhaitez rénover une façade,
+                    reprendre des murs extérieurs
+                    ou obtenir un avis sur des travaux à réaliser ?
+                </p>
+
+                <p>
+                    Contactez MISA9 en indiquant, si possible :
+                </p>
+
+                <ul>
+                    <li>la commune du chantier ;</li>
+                    <li>le type de travaux souhaité ;</li>
+                    <li>les surfaces concernées ;</li>
+                    <li>l'état actuel de la façade ou des murs ;</li>
+                    <li>quelques photographies si vous en disposez.</li>
+                </ul>
+
+                <p>
+                    Nous pourrons ainsi mieux comprendre
+                    votre demande avant de convenir de la suite.
+                </p>
+
+            </div>
+
+
+            <div class="contact-details">
+
+
+                <div class="contact-row">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M5 4h4l2 5-3 2a14 14 0 006 6l2-3 5 2v4c0 1-1 2-2 2C9 21 3 15 3 6c0-1 1-2 2-2z"></path>
+                    </svg>
+
+                    <span>
+                        <strong>Téléphone</strong><br>
+                        07.60.26.76.37
+                    </span>
+
+                </div>
+
+
+                <div class="contact-row">
+
+                    <svg viewBox="0 0 24 24">
+                        <rect x="3" y="5" width="18" height="14"></rect>
+                        <path d="M3 7l9 6 9-6"></path>
+                    </svg>
+
+                    <span>
+                        <strong>E-mail</strong><br>
+                        zabouk@live.com
+                    </span>
+
+                </div>
+
+
+                <div class="contact-row">
+
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22s7-6 7-13a7 7 0 10-14 0c0 7 7 13 7 13z"></path>
+                        <circle cx="12" cy="9" r="2"></circle>
+                    </svg>
+
+                    <span>
+                        <strong>Zone</strong><br>
+                        Marseille et alentours
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="contact-form">
+
+                <h3>
+                    Envoyer une demande
+                </h3>
+
+                <form id="contactForm">
+
+                    <input
+                        type="text"
+                        id="contactName"
+                        placeholder="Nom"
+                        required
+                    >
+
+                    <input
+                        type="email"
+                        id="contactEmail"
+                        placeholder="E-mail"
+                        required
+                    >
+
+                    <textarea
+                        id="contactMessage"
+                        placeholder="Votre message"
+                        required
+                    ></textarea>
+
+                    <button
+                        class="button"
+                        type="submit"
+                    >
+                        Envoyer ma demande
+                    </button>
+
+                </form>
+
+                <p class="form-help">
+                    Le bouton ouvrira votre messagerie
+                    avec la demande préremplie.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer class="footer">
+
+    <div class="container footer-grid">
+
+
+        <div class="logo">
+
+            <div class="logo-main">
+                MISA<span>9</span>
+            </div>
+
+            <small class="logo-sub">
+                FAÇADES & RÉNOVATION EXTÉRIEURE
+            </small>
+
+        </div>
+
+
+        <div class="footer-center">
+
+            <strong>
+                Lyazid Derouiche
+            </strong>
+
+            <br>
+
+            Entrepreneur individuel
+
+            <br>
+
+            Marseille et alentours
+
+        </div>
+
+
+        <div class="footer-right">
+
+            <a href="#">
+                Mentions légales
+            </a>
+
+            <br><br>
+
+            © MISA9
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+/* ==================================================
+   MENU MOBILE
+================================================== */
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const navMenu =
+    document.getElementById("navMenu");
+
+
+menuToggle.addEventListener(
+    "click",
+    function () {
+
+        const isOpen =
+            navMenu.classList.toggle("open");
+
+        menuToggle.classList.toggle(
+            "open",
+            isOpen
+        );
+
+        menuToggle.setAttribute(
+            "aria-expanded",
+            isOpen
+        );
+
+    }
+);
+
+
+/* ==================================================
+   NAVIGATION
+================================================== */
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(function(link) {
+
+        link.addEventListener(
+            "click",
+            function(event) {
+
+                const targetId =
+                    this.getAttribute("href");
+
+                if (
+                    targetId === "#" ||
+                    !document.querySelector(targetId)
+                ) {
+                    return;
+                }
+
+                event.preventDefault();
+
+                const target =
+                    document.querySelector(targetId);
+
+                target.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+
+                /* fermeture menu mobile */
+
+                navMenu.classList.remove("open");
+                menuToggle.classList.remove("open");
+
+                menuToggle.setAttribute(
+                    "aria-expanded",
+                    "false"
+                );
+
+            }
+        );
+
+    });
+
+
+/* ==================================================
+   FORMULAIRE
+================================================== */
+
+document
+    .getElementById("contactForm")
+    .addEventListener(
+        "submit",
+        function(event) {
+
+            event.preventDefault();
+
+            const recipient =
+                "ZABOUK@LIVE.COM";
+
+            const name =
+                document
+                    .getElementById("contactName")
+                    .value;
+
+            const email =
+                document
+                    .getElementById("contactEmail")
+                    .value;
+
+            const message =
+                document
+                    .getElementById("contactMessage")
+                    .value;
+
+
+            const subject =
+                encodeURIComponent(
+                    "Demande de devis MISA9"
+                );
+
+
+            const body =
+                encodeURIComponent(
+                    "Nom : " + name + "\n" +
+                    "E-mail : " + email + "\n\n" +
+                    "Message :\n" + message
+                );
+
+
+            window.location.href =
+                "mailto:" +
+                recipient +
+                "?subject=" +
+                subject +
+                "&body=" +
+                body;
+
+        }
+    );
+
+</script>
+
+
+</body>
+</html>
