@@ -1044,6 +1044,135 @@ section {
     }
 
 }
+   /* ==================================================
+   FORMULAIRE DE DEVIS V3
+================================================== */
+
+.contact-form {
+    background: #f7f5f2;
+    padding: 28px;
+    border-radius: 6px;
+}
+
+.contact-form h3 {
+    font-size: 22px;
+    margin-bottom: 7px;
+}
+
+.form-intro {
+    font-size: 13px;
+    color: #62676b;
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.form-field {
+    margin-bottom: 14px;
+}
+
+.form-field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+
+    width: 100%;
+
+    padding: 12px 13px;
+
+    border: 1px solid #d8d5d1;
+    border-radius: 4px;
+
+    background: white;
+    color: #24292d;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color .2s,
+        box-shadow .2s;
+}
+
+.contact-form textarea {
+    min-height: 125px;
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+
+    border-color: #d7652b;
+
+    box-shadow:
+        0 0 0 3px rgba(215,101,43,.10);
+}
+
+.form-submit {
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    margin-top: 3px;
+}
+
+.form-submit:disabled {
+    opacity: .65;
+    cursor: wait;
+}
+
+.privacy-note {
+
+    font-size: 11px;
+    line-height: 1.5;
+
+    color: #777;
+
+    margin-top: 12px;
+}
+
+.form-message {
+
+    padding: 12px;
+
+    border-radius: 4px;
+
+    margin-top: 12px;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.success-message {
+    background: #edf7ef;
+    color: #246b37;
+}
+
+.error-message {
+    background: #fff0ed;
+    color: #a43c28;
+}
+
+
+@media(max-width:560px) {
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+}
 
 </style>
 </head>
@@ -1696,49 +1825,185 @@ section {
             
             </div>
 
-
+            
             <div class="contact-form">
-
-                <h3>
-                    Envoyer une demande
-                </h3>
-
-                <form id="contactForm">
-
+            
+                <h3>Demander un devis</h3>
+            
+                <p class="form-intro">
+                    Décrivez-nous brièvement votre projet.
+                    Plus votre demande est précise, plus nous pourrons
+                    facilement comprendre votre besoin.
+                </p>
+            
+                <form
+                    id="devisForm"
+                    action="https://formspree.io/f/xwlknork"
+                    method="POST"
+                >
+            
+                    <div class="form-row">
+            
+                        <div class="form-field">
+                            <label for="name">Nom *</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="Nom"
+                                autocomplete="name"
+                                required
+                            >
+                        </div>
+            
+                        <div class="form-field">
+                            <label for="phone">Téléphone *</label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="Téléphone"
+                                autocomplete="tel"
+                                required
+                            >
+                        </div>
+            
+                    </div>
+            
+            
+                    <div class="form-field">
+            
+                        <label for="email">E-mail</label>
+            
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            autocomplete="email"
+                        >
+            
+                    </div>
+            
+            
+                    <div class="form-field">
+            
+                        <label for="city">Commune du chantier *</label>
+            
+                        <input
+                            type="text"
+                            id="city"
+                            name="Commune"
+                            placeholder="Ex. Marseille, Aubagne, Aix-en-Provence..."
+                            required
+                        >
+            
+                    </div>
+            
+            
+                    <div class="form-field">
+            
+                        <label for="work">
+                            Type de travaux *
+                        </label>
+            
+                        <select
+                            id="work"
+                            name="Type de travaux"
+                            required
+                        >
+            
+                            <option value="">
+                                Sélectionnez une prestation
+                            </option>
+            
+                            <option>
+                                Ravalement de façade
+                            </option>
+            
+                            <option>
+                                Enduits extérieurs
+                            </option>
+            
+                            <option>
+                                Peinture extérieure
+                            </option>
+            
+                            <option>
+                                Traitement des murs
+                            </option>
+            
+                            <option>
+                                Remise en état de façade
+                            </option>
+            
+                            <option>
+                                Finitions extérieures
+                            </option>
+            
+                            <option>
+                                Autre demande
+                            </option>
+            
+                        </select>
+            
+                    </div>
+            
+            
+                    <div class="form-field">
+            
+                        <label for="message">
+                            Décrivez votre projet *
+                        </label>
+            
+                        <textarea
+                            id="message"
+                            name="Message"
+                            placeholder="État de la façade, travaux souhaités, surface approximative..."
+                            required
+                        ></textarea>
+            
+                    </div>
+            
+            
+                    <!-- Anti-spam invisible -->
                     <input
                         type="text"
-                        id="contactName"
-                        placeholder="Nom"
-                        required
+                        name="_gotcha"
+                        style="display:none"
                     >
-
-                    <input
-                        type="email"
-                        id="contactEmail"
-                        placeholder="E-mail"
-                        required
-                    >
-
-                    <textarea
-                        id="contactMessage"
-                        placeholder="Votre message"
-                        required
-                    ></textarea>
-
+            
+            
                     <button
-                        class="button"
+                        class="button form-submit"
                         type="submit"
                     >
-                        Envoyer ma demande
+                        Envoyer ma demande →
                     </button>
-
+            
+            
+                    <div
+                        id="formSuccess"
+                        class="form-message success-message"
+                        hidden
+                    >
+                        ✓ Merci. Votre demande a bien été envoyée à MISA9.
+                    </div>
+            
+                    <div
+                        id="formError"
+                        class="form-message error-message"
+                        hidden
+                    >
+                        Une erreur est survenue. Vous pouvez également
+                        nous contacter par téléphone ou WhatsApp.
+                    </div>
+            
+            
+                    <p class="privacy-note">
+                        Les informations transmises sont utilisées uniquement
+                        pour répondre à votre demande de contact ou de devis.
+                    </p>
+            
                 </form>
-
-                <p class="form-help">
-                    Le bouton ouvrira votre messagerie
-                    avec la demande préremplie.
-                </p>
-
+            
             </div>
 
 
@@ -1892,60 +2157,78 @@ document
 
 
 /* ==================================================
-   FORMULAIRE
+   FORMULAIRE DE DEVIS
 ================================================== */
 
-document
-    .getElementById("contactForm")
-    .addEventListener(
+const devisForm =
+    document.getElementById("devisForm");
+
+if (devisForm) {
+
+    devisForm.addEventListener(
         "submit",
-        function(event) {
+        async function(event) {
 
             event.preventDefault();
 
-            const recipient =
-                "ZABOUK@LIVE.COM";
+            const submitButton =
+                devisForm.querySelector(".form-submit");
 
-            const name =
-                document
-                    .getElementById("contactName")
-                    .value;
+            const success =
+                document.getElementById("formSuccess");
 
-            const email =
-                document
-                    .getElementById("contactEmail")
-                    .value;
+            const error =
+                document.getElementById("formError");
 
-            const message =
-                document
-                    .getElementById("contactMessage")
-                    .value;
+            success.hidden = true;
+            error.hidden = true;
 
+            submitButton.disabled = true;
+            submitButton.textContent = "Envoi en cours...";
 
-            const subject =
-                encodeURIComponent(
-                    "Demande de devis MISA9"
+            try {
+
+                const response = await fetch(
+                    devisForm.action,
+                    {
+                        method: devisForm.method,
+                        body: new FormData(devisForm),
+                        headers: {
+                            "Accept": "application/json"
+                        }
+                    }
                 );
 
+                if (response.ok) {
 
-            const body =
-                encodeURIComponent(
-                    "Nom : " + name + "\n" +
-                    "E-mail : " + email + "\n\n" +
-                    "Message :\n" + message
-                );
+                    devisForm.reset();
 
+                    success.hidden = false;
 
-            window.location.href =
-                "mailto:" +
-                recipient +
-                "?subject=" +
-                subject +
-                "&body=" +
-                body;
+                    submitButton.textContent =
+                        "Demande envoyée ✓";
+
+                } else {
+
+                    throw new Error("Erreur Formspree");
+
+                }
+
+            } catch (e) {
+
+                error.hidden = false;
+
+                submitButton.textContent =
+                    "Réessayer";
+
+            }
+
+            submitButton.disabled = false;
 
         }
     );
+
+}
 
 </script>
 <div class="mobile-contact-bar">
